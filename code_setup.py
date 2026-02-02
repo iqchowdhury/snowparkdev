@@ -23,3 +23,6 @@ pip install snowflake-cli-labs
 # Create Project Structure
 snow init my_snowpark_project --template example_snowpark
 
+
+
+snow snowpark deploy --help
