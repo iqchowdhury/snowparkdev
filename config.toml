@@ -1,13 +1,8 @@
-default_connection_name = "myconnection"
-[connections]
-[connections.myconnection]
-user = ""
-
-#default_connection_name = "my_test_connection" 
-#[connections]
-#[connections.my_test_connection]
-#account = "onlwzlj-dev_account"
-#user = "IQCHY500"
-#password = "Chy@7735411064"
-#database = "DEMO_DB"
-#schema = "PUBLIC"
+[connections.default]
+account = "${SNOWFLAKE_ACCOUNT}"
+user = "${SNOWFLAKE_USER}"
+password = "${SNOWFLAKE_PASSWORD}"
+role = "${SNOWFLAKE_ROLE}"
+warehouse = "${SNOWFLAKE_WAREHOUSE}"
+database = "${SNOWFLAKE_DATABASE}"
+schema = "PUBLIC"
