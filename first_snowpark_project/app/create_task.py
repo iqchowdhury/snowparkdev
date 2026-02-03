@@ -43,19 +43,19 @@ tasks = root.databases["demo_db"].schemas['public'].tasks
 # create dag  
 with DAG("my_dag",schedule=timedelta(days=1),use_func_return_value=True,stage_location='@dev_deployment',warehouse="compute_wh") as dag:
   dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.hello_procedure,args=["pradeep"],\
-    input_types=[StringType()],return_type=StringType(), packages=["snowflake-snowpark-python"],imports=['@dev_deployment/my_snowpark_project/app.zip'],\
+    input_types=[StringType()],return_type=StringType(), packages=["snowflake-snowpark-python"],imports=['@dev_deployment/first_snowpark_project/app.zip'],\
     stage_location='@dev_deployment'),warehouse="compute_wh")
   
   dag_task_2 =  DAGTask("my_test_task",StoredProcedureCall(procedures.test_procedure,\
-    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
     stage_location="@dev_deployment"),warehouse="compute_wh")
   
   dag_task_3 =  DAGTask("my_test_task3",StoredProcedureCall(procedures.test_procedure_two,\
-    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
     stage_location="@dev_deployment"),warehouse="compute_wh")
   
   dag_task_4 =  DAGTask("my_test_task4",StoredProcedureCall(procedures.test_procedure,\
-    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
     stage_location="@dev_deployment"),warehouse="compute_wh")
   
   dag_task_1 >> dag_task_2 >> [dag_task_3,dag_task_4]
@@ -74,23 +74,23 @@ with DAG("my_dag",schedule=timedelta(days=1),use_func_return_value=True,stage_lo
   
 with DAG("my_dag_task_branch",schedule=timedelta(days=1),stage_location='@dev_deployment',warehouse="compute_wh",use_func_return_value=True,packages=["snowflake-snowpark-python"]) as dag:
   # dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.hello_procedure,args=["pradeep"],\
-  #   input_types=[StringType()],return_type=StringType(), packages=["snowflake-snowpark-python"],imports=['@dev_deployment/my_snowpark_project/app.zip'],\
+  #   input_types=[StringType()],return_type=StringType(), packages=["snowflake-snowpark-python"],imports=['@dev_deployment/first_snowpark_project/app.zip'],\
   #   stage_location='@dev_deployment'),warehouse="compute_wh")
   
   dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.test_procedure,\
-    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
     stage_location="@dev_deployment"),warehouse="compute_wh")
   
   dag_task_2 =  DAGTask("my_test_task",StoredProcedureCall(procedures.test_procedure,\
-    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
     stage_location="@dev_deployment"),warehouse="compute_wh")
   
   dag_task_3 =  DAGTask("my_test_task3",StoredProcedureCall(procedures.test_procedure_two,\
-    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
     stage_location="@dev_deployment"),warehouse="compute_wh")
   
   dag_task_4 =  DAGTask("my_test_task4",StoredProcedureCall(procedures.test_procedure,\
-    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
     stage_location="@dev_deployment"),warehouse="compute_wh")
   
   dag_task_branch = DAGTaskBranch("task_branch",task_branch_condition,warehouse="compute_wh")
@@ -132,7 +132,7 @@ with DAG("my_dag_task_branch",schedule=timedelta(days=1),stage_location='@dev_de
 #     stage_location="@dev_deployment"),warehouse="compute_wh")
   
 #   # dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.test_procedure,\
-#   #   packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+#   #   packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
 #   #   stage_location="@dev_deployment"),warehouse="compute_wh")
   
 #   dag_task_2 =  DAGTask("my_test_task",StoredProcedureCall(receive_task_value,\
@@ -158,19 +158,19 @@ with DAG("my_dag_task_branch",schedule=timedelta(days=1),stage_location='@dev_de
 # with DAG("my_dag_branch3",schedule=timedelta(days=1),use_func_return_value=True,stage_location="@dev_deployment") as dag:
   
 #   dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.hello_procedure,args=["pradeep"],\
-#     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+#     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
 #     stage_location="@dev_deployment"),warehouse="compute_wh")
   
 #   dag_task_2 =  DAGTask("my_test_task",StoredProcedureCall(procedures.test_procedure,\
-#     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+#     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
 #     stage_location="@dev_deployment"),warehouse="compute_wh")
   
 #   dag_task_3 =  DAGTask("my_test_task3",StoredProcedureCall(procedures.test_procedure,\
-#     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+#     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
 #     stage_location="@dev_deployment"),warehouse="compute_wh")
   
 #   dag_task_4 =  DAGTask("my_test_task4",StoredProcedureCall(procedures.test_procedure,\
-#     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+#     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/first_snowpark_project/app.zip"],\
 #     stage_location="@dev_deployment"),warehouse="compute_wh")
   
 #   dag_task_branch = DAGTaskBranch("task_branch",task_branch_condition,warehouse="compute_wh")
