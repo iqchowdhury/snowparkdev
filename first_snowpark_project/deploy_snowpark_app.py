@@ -7,7 +7,7 @@ import yaml
 directory_path= sys.argv[1]
 print(f"Directory path: {directory_path}")
 
-os.chdir(f"{directory_path}")
+# os.chdir(f"{directory_path}")
 # Make sure all 6 SNOWFLAKE_ environment variables are set
 ## SnowCLI accesses the passowrd directly from the SNOWFLAKE_PASSWORD environmnet variable
 os.system(f"snow snowpark build")
