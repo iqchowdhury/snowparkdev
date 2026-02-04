@@ -4,7 +4,7 @@ import yaml
 
 # os.system(f"conda init")
 # os.system(f"conda activate snowpark")
-directory_path= sys.argv[2]
+directory_path= sys.argv[1]
 print(f"Directory path: {directory_path}")
 
 os.chdir(f"{directory_path}")
