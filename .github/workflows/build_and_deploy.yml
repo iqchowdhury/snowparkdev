@@ -30,6 +30,14 @@ jobs:
       - name: Install Python packages
         run: pip install -r requirements.txt
 
+      - name: Build Snowpark app
+        working-directory: ${{ github.workspace }}/first_snowpark_project
+        run: snow snowpark build
+
+      - name: Deploy Snowpark app
+        working-directory: ${{ github.workspace }}/first_snowpark_project
+        run: snow snowpark deploy
+      
       - name: Deploy Snowpark apps
         working-directory: first_snowpark_project
         env:
