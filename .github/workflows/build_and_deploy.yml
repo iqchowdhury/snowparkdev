@@ -30,6 +30,7 @@ jobs:
       - name: Install Python packages
         run: pip install -r requirements.txt
 
+      
       - name: Deploy Snowpark apps
         working-directory: first_snowpark_project
         env:
