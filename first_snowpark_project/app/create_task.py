@@ -11,7 +11,7 @@ import os
 from snowflake.core.task.dagv1 import DAG , DAGTask , DAGOperation , CreateMode , DAGTaskBranch
 
 
-#conn = snowflake.connector.connect()
+# conn = snowflake.connector.connect()
 
 print("****** snowflake account ******")
 #print("snow account here"+os.environ.get("SNOWFLAKE_ACCOUNT"))
